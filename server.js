@@ -1,21 +1,15 @@
-const Crawler = require('crawler');
+const express = require("express");
 
-const c = new Crawler({
-    maxConnections: 10,
-    callback: (error, res, done) => {
-        if (error) {
-            console.log(error);
-        } else {
-            const $ = res.$;
+const PORT = process.env.PORT || 3001;
 
-            console.log($('.recent-matches .main .sessions table:first-child .timeago').text());
-        }
-        done();
-    }
+const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use(express.static(__dirname + '/public'));
+app.use(require("./api.js"));
+
+app.listen(PORT, () => {
+  console.log(`Server listening on: http://localhost:${PORT}.`)
 });
-
-// Replace with steam profile number you want to use
-// go to https://steamidfinder.com/ and find the number associated with the steam profile
-const steamProfileNum = '';
-
-c.queue(`https://rocketleague.tracker.network/rocket-league/profile/steam/${steamProfileNum}/overview`);
