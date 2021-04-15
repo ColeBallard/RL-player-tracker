@@ -16,8 +16,13 @@ if(TILL_URL.query != null) {
 request.createClient(TILL_BASE).post(TILL_PATH, {
   "phone": process.env.PN,
   "questions": [{
-    "text": "Your player is online!"
-  }]
+    "text": "Your player is online! Reply with 'Okay' when you're ready to be notified when they come back online, or 'Stop' if you want to stop receiving these messages.",
+      "tag": "user_res",
+      "responses": ["Okay", "Stop"],
+      "webhook": "https://rlplayertracker.herokuapp.com/response/"
+    }
+  ],
+  "conclusion": "Understood!"
 }, function(err, res, body) {
   return console.log(res.statusCode);
 });
