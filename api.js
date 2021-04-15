@@ -5,9 +5,9 @@ const request = require('request-json');
 const url = require('url');
 require('dotenv').config;
 
-var TILL_URL = url.parse(process.env.TILL_URL);
-var TILL_BASE = TILL_URL.protocol + "//" + TILL_URL.host;
-var TILL_PATH = TILL_URL.pathname;
+const TILL_URL = url.parse(process.env.TILL_URL);
+const TILL_BASE = TILL_URL.protocol + "//" + TILL_URL.host;
+const TILL_PATH = TILL_URL.pathname;
 
 if(TILL_URL.query != null) {
   TILL_PATH += "?"+TILL_URL.query;
