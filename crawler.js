@@ -36,8 +36,14 @@ const c = new Crawler({
 
 // Replace with steam profile number you want to use
 // go to https://steamidfinder.com/ and find the number associated with the steam profile
-const steamProfileNum = '';
+const steamProfileNum = '76561199067131143';
 
-c.queue(`https://rocketleague.tracker.network/rocket-league/profile/steam/${steamProfileNum}/overview`);
+const q = () => { 
+  c.queue(`https://rocketleague.tracker.network/rocket-league/profile/steam/${steamProfileNum}/overview`);
+};
+
+q();
+
+setInterval(q, 60*1000);
 
 module.exports = c;
