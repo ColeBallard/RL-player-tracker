@@ -16,12 +16,8 @@ if(TILL_URL.query != null) {
 request.createClient(TILL_BASE).post(TILL_PATH, {
   "phone": process.env.PN,
   "questions": [{
-  "text": "Favorite color?",
-    "tag": "favorite_color",
-    "responses": ["Red", "Green", "Yellow"],
-    "webhook": "https://rlplayertracker.herokuapp.com/results/"
-  }],
-  "conclusion": "Thank you for your time"
+    "text": "Your player is online!"
+  }]
 }, function(err, res, body) {
   return console.log(res.statusCode);
 });
