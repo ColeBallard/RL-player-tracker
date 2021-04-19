@@ -1,4 +1,8 @@
 const Crawler = require('crawler');
+const twilio = require('twilio');
+require('dotenv').config();
+
+const client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 const timeAgoBool = time => {
   if (time.indexOf('seconds') != -1)
@@ -13,7 +17,12 @@ const timeAgoBool = time => {
 
 const notify = () => {
   console.log('Player online.')
-  // send sms or email then stop crawling for 30 minutes
+  client.messages.create({
+    body: 'Player online.',
+    to: process.env.RECIPIENT_PHONE_NUMBER,
+    from: process.env.TWILIO_PHONE_NUMBER
+  })
+  .then(message => console.log(message.sid));
 };
 
 const c = new Crawler({
@@ -34,16 +43,10 @@ const c = new Crawler({
     }
 });
 
-// Replace with steam profile number you want to use
-// go to https://steamidfinder.com/ and find the number associated with the steam profile
-const steamProfileNum = '76561199067131143';
-
 const q = () => { 
-  c.queue(`https://rocketleague.tracker.network/rocket-league/profile/steam/${steamProfileNum}/overview`);
+  c.queue(process.env.RLTRACKER_PROFILE_URL);
 };
 
 q();
 
 setInterval(q, 60*1000);
-
-module.exports = c;
