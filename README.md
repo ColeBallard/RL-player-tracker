@@ -37,6 +37,8 @@ RLTRACKER_PROFILE_URL='https://rocketleague.tracker.network/rocket-league/profil
 node crawler.js
 ```
 
+You will get a text message whenever that rocket league player plays a competitive ranked game.
+
 ## Contribution
 If you have an idea or want to report a bug, please create an issue.
 
