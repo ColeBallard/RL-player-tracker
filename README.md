@@ -18,12 +18,12 @@ npm install
 
 3. Create a free Twilio account [here](https://www.twilio.com/try-twilio) and get a free trial Twilio Phone Number.
 
-3. Create .env file.
+4. Create .env file.
 ```shell
 touch .env
 ```
 
-4. Add the following to the .env file.
+5. Add the following to the .env file.
 ```sh
 TWILIO_ACCOUNT_SID='YOURACCOUNTSID'
 TWILIO_AUTH_TOKEN='YOURAUTHTOKEN'
@@ -32,7 +32,7 @@ TWILIO_PHONE_NUMBER='+19999999999'
 RLTRACKER_PROFILE_URL='https://rocketleague.tracker.network/rocket-league/profile/steam/76561198446567626/overview'
 ```
 
-5. Run the crawler.
+6. Run the crawler.
 ```sh
 node crawler.js
 ```
